@@ -1,5 +1,7 @@
 package org.eventi;
 
+import org.eventi.bonus.ProgrammaEventi;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -11,25 +13,34 @@ public class Main {
         //Apro lo Scanner
         Scanner scanner = new Scanner(System.in);
 
+        //Istanza ProgrammaEventi
+        ProgrammaEventi programma = new ProgrammaEventi("Il mio programma di eventi: ");
 
         boolean stop = true; //Booleano per il ciclo infinito finche' non ritorna false
 
         while (stop) {
             try {
-                System.out.println("Vuoi creare un concerto o un evento? (c/e)");
+                System.out.println("Vuoi creare un concerto o un evento? (c/e) " + "\nOppure visualizza il tuo programma (v) ");
                 String scelta = scanner.nextLine().toLowerCase();
 
-                if (scelta.equals("c")) {
-                    creaConcerto(scanner);
-                } else if (scelta.equals("e")) {
-                    creaEvento(scanner);
-                } else {
-                    System.out.println("Scelta non valida. Riprova.");
-                    continue; // Ritorna all'inizio del ciclo
+                switch (scelta) {
+                    case "c" -> {
+                        Evento evento = creaConcerto(scanner);
+                        programma.aggiungiEvento(evento); //Aggiungo il mio concerto al programma
+                    }
+                    case "e" -> {
+                        Evento evento = creaEvento(scanner);
+                        programma.aggiungiEvento(evento); //Aggiungo il mio evento al programma
+                    }
+                    case "v" -> System.out.println(programma);
+                    default -> {
+                        System.out.println("Scelta non valida. Riprova.");
+                        continue; // Ritorna all'inizio del loop
+                    }
                 }
 
                 // Chiedo all'utente se vuole continuare
-                System.out.println("Vuoi creare un altro evento? (s/n)");
+                System.out.println("Vuoi creare un altro evento o visulizzare il programma? (s/n/v)");
                 String risposta = scanner.nextLine().toLowerCase();
 
                 if (!risposta.equals("s")) {
@@ -44,7 +55,7 @@ public class Main {
     }
 
     //Creo il mio concerto
-    private static void creaConcerto(Scanner scanner) {
+    private static Concerto creaConcerto(Scanner scanner) {
         System.out.println("Inserisci il titolo del concerto:");
         String titolo = scanner.nextLine();
 
@@ -65,10 +76,11 @@ public class Main {
 
         Concerto concerto = new Concerto(titolo, data, postiTotali, ora, prezzo);
         System.out.println("Concerto creato con successo: " + concerto);
+        return concerto;
     }
 
     //Metodo per creare l'evento
-    private static void creaEvento(Scanner scanner) {
+    private static Evento creaEvento(Scanner scanner) {
         System.out.println("Inserisci il titolo dell'evento:");
         String titolo = scanner.nextLine(); //TITOLO
 
@@ -118,5 +130,6 @@ public class Main {
         // Stampare il numero di posti prenotati e disponibili
         System.out.println("Posti prenotati: " + evento.getPostiPrenotati());
         System.out.println("Posti disponibili: " + (evento.getPostiTotali() - evento.getPostiPrenotati()));
+        return evento;
     }
 }
