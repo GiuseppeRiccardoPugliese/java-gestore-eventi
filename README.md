@@ -6,9 +6,13 @@ conferenze, spettacoli,...)
 La consegna è di creare una classe Evento che abbia le seguenti proprietà:
 
 ● titolo
+
 ● data
+
 ● numero di posti in totale (capienza della location)
+
 ● numero di posti prenotati
+
 
 Quando si istanzia un nuovo evento questi attributi devono essere tutti valorizzati nel
 costruttore, tranne posti prenotati che va inizializzato a 0.
@@ -19,9 +23,13 @@ In caso contrario sollevare opportune eccezioni.
 Aggiungere metodi getter e setter in modo che:
 
 ● titolo sia in lettura e in scrittura
+
 ● data sia in lettura e scrittura
+
 ● numero di posti totale sia solo in lettura
+
 ● numero di posti prenotati sia solo in lettura
+
 
 Vanno inoltre implementati dei metodi public che svolgono le seguenti funzioni:
 
@@ -59,6 +67,7 @@ MILESTONE 3
 Creare una classe Concerto che estende Evento, che ha anche gli attributi:
 
 ● ora: LocalTime
+
 ● prezzo: BigDecimal
 
 Aggiungere questi attributi nel costruttore e implementarne getter e setter
@@ -74,6 +83,7 @@ MILESTONE 4 (BONUS)
 Creare una classe ProgrammEventi con i seguenti attributi
 
 ● titolo: String
+
 ● eventi: List<Evento>
 
 Nel costruttore valorizzare il titolo, passato come parametro, e inizializzare la lista di eventi
