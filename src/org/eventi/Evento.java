@@ -83,6 +83,12 @@ public class Evento {
         postiPrenotati -= numeroPosti;
     }
 
+    //Metodo data formattata
+    public String getDataFormattata() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return data.format(formatter);
+    }
+
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
