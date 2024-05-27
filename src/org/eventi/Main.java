@@ -24,16 +24,19 @@ public class Main {
                 String scelta = scanner.nextLine().toLowerCase();
 
                 switch (scelta) {
-                    case "c" -> {
+                    case "c" : {
                         Evento evento = creaConcerto(scanner);
                         programma.aggiungiEvento(evento); //Aggiungo il mio concerto al programma
+                        break;
                     }
-                    case "e" -> {
+                    case "e" : {
                         Evento evento = creaEvento(scanner);
                         programma.aggiungiEvento(evento); //Aggiungo il mio evento al programma
+                        break;
                     }
-                    case "v" -> System.out.println(programma);
-                    default -> {
+                    case "v" : System.out.println(programma);
+                        break;
+                    default : {
                         System.out.println("Scelta non valida. Riprova.");
                         continue; // Ritorna all'inizio del loop
                     }
@@ -43,8 +46,12 @@ public class Main {
                 System.out.println("Vuoi creare un altro evento o visulizzare il programma? (s/n/v)");
                 String risposta = scanner.nextLine().toLowerCase();
 
-                if (!risposta.equals("s")) {
+                if (risposta.equals("n")) {
+                    System.out.println("Ciao!");
                     stop = false;
+                }
+                if (risposta.equals("v")) {
+                    System.out.println(programma);
                 }
             } catch (Exception e) {
                 System.out.println("Errore: " + e.getMessage());
