@@ -3,7 +3,7 @@ package org.eventi;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Eventi {
+public class Evento {
     //ATTRIBUTES
     private String titolo;
     private LocalDate data;
@@ -11,7 +11,7 @@ public class Eventi {
     private int postiPrenotati;
 
     //CONSTRUCT
-    public Eventi(String titolo, LocalDate data, int postiTotali) throws IllegalArgumentException{
+    public Evento(String titolo, LocalDate data, int postiTotali) throws IllegalArgumentException{
         //Controlli se la data e' prima
         if (data.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("La data dell'evento non può essere nel passato.");
